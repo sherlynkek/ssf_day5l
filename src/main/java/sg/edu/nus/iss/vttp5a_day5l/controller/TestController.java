@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import sg.edu.nus.iss.vttp5a_day5l.model.Person;
 import sg.edu.nus.iss.vttp5a_day5l.service.PersonService;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 @Controller
 @RequestMapping("/test")

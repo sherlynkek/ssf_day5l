@@ -36,6 +36,6 @@ public class PersonService {
     }
 
     public Boolean delete(String redisKey, Person person) {
-        return personRepo.deleteItem(null, person.toString());
+        return personRepo.deleteItem(redisKey, person.toString());
     }
 }
