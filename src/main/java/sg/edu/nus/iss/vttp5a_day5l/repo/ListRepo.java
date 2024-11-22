@@ -1,5 +1,7 @@
 package sg.edu.nus.iss.vttp5a_day5l.repo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -41,5 +43,23 @@ public class ListRepo {
         return template.opsForList().size(key);
     }
 
+    public List<Object> getList(String key) {
+        List<Object> list = template.opsForList().range(key, 0, -1);
+        
+        return list;
+    }
+
+    public Boolean deleteItem(String key, String valueToDelete) {
+        Boolean isDeleted = false;
+
+        Long iFound = template.opsForList().indexOf(key, valueToDelete);
+
+        if(iFound >= 0) {
+            template.opsForList().remove(key, 1, valueToDelete);
+            isDeleted = true;
+        }
+
+        return isDeleted;
+    }
 
 }
