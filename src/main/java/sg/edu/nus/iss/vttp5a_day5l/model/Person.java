@@ -1,16 +1,31 @@
 package sg.edu.nus.iss.vttp5a_day5l.model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class Person {
-
-    // put in the necessary validations
+    
+    // Put in necessary validations
+    @Min(value = 1, message = "Please enter your id!")
     private Integer id;
-    private String name;
-    private String email;
 
-    public Person(Integer id, String name, String email) {
+    @NotBlank(message = "Please enter your name!")
+    @Size(min = 2, message = "Your name must be longer than 2 characters!")
+    private String fullName;
+
+    @NotBlank(message = "Please enter your email!")
+    @Email(message = "Please enter a VALID email!")
+    private String email;
+    
+    public Person(Integer id, String fullName, String email) {
         this.id = id;
-        this.name = name;
+        this.fullName = fullName;
         this.email = email;
+    }
+
+    public Person() {
     }
 
     public Integer getId() {
@@ -21,12 +36,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -39,6 +54,8 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person [id=" + id + ", name=" + name + ", email=" + email + "]";
+        return id + "," + fullName + "," + email;
     }
+
+    
 }

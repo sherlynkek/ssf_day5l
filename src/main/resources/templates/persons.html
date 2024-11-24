@@ -7,31 +7,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-    <a class="btn btn-primary" th:href="@{/persons/create}">Create</a>
-
-    <table class="table table-primary">
+    <a th:href="@{/persons/create}">Add New Person</a>
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Full name</th>
                 <th>Email</th>
-                <th>Action</th>
+                <th colspan="2">Action</th>
             </tr>
         </thead>
-        <tbody>
-            <tr th:each="p: ${persons}">
-                <td th:utext="p: ${p.id}"></td>
-                <td th:utext="p: ${p.name}"></td>
-                <td th:utext="p: ${p.email}"></td>
-                <td>
-                    <a class="btn btn-danger" th:href="@{#}">Delete</a>
-                </td>
-            </tr>
+        <tbody th:each="person : ${persons}">
+            <td th:utext="${person.id}" name="id"></td>
+            <td th:utext="${person.fullName}" name="fullName"></td>
+            <td th:utext="${person.email}" name="email"></td>
+            <td>
+                <a th:href="@{/persons/delete/{id}/{fullName}/{email}(id=${person.id},fullName=${person.fullName},email=${person.email})}">Delete</a>
+            </td>
+            <td>
+                <a th:href="@{/persons/edit/{id}/{fullName}/{email}(id=${person.id},fullName=${person.fullName},email=${person.email})}">Edit</a>
+            </td>
         </tbody>
-    </table>
-</div>
-    
+    </table>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

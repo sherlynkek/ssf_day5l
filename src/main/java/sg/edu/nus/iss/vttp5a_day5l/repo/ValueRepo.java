@@ -9,51 +9,47 @@ import sg.edu.nus.iss.vttp5a_day5l.util.Util;
 
 @Repository
 public class ValueRepo {
-
-    //slide 20
+    
+    // Slide 20
     @Autowired
     @Qualifier(Util.template01)
-    RedisTemplate<String,String> template;
+    RedisTemplate<String, String> template;
 
-    
-
-    // create / update a value
+    // Slide 24: Create/update a value
     public void createValue(String key, String value) {
         template.opsForValue().set(key, value);
 
-        // setIfPresent
-        // setIfAbsent
-
+        // setIfPresent() or setIfAbsent() also available
     }
 
-    // slide 25 - retrieve a value
+    // Slide 25: Retrieve a value
     public String getValue(String key) {
         return template.opsForValue().get(key);
     }
 
-    // slide 27 - delete a value
+    // Slide 27: Delete a value
     public Boolean deleteValue(String key) {
         return template.delete(key);
     }
 
-    // slide 26 - only works with key for integer value
-    public void increamentValue(String key) {
+    // Slide 26: Increment only works for key with int value
+    public void incrementValue(String key) {
         template.opsForValue().increment(key);
     }
-
+    
     public void decrementValue(String key) {
         template.opsForValue().decrement(key);
     }
 
-    public void increamentByValue(String key, Integer value) {
+    public void incrementValueBy(String key, Integer value) {
         template.opsForValue().increment(key, value);
     }
-
-    public void decrementByValue(String key, Integer value) {
-        template.opsForValue().decrement(key, value);
+    
+    public void decrementValueBy(String key, Integer value) {
+        template.opsForValue().decrement(key);
     }
 
-    // slide 28
+    // Slide 28
     public Boolean checkExists(String key) {
         return template.hasKey(key);
     }

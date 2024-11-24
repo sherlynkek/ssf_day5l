@@ -14,4 +14,6 @@ public class RedisTestService {
 
     @Autowired
     ValueRepo vRepo;
+
+     // Write service functions that perform some operation to the repo?
 }
