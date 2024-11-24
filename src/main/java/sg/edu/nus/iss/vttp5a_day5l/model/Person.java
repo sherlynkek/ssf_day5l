@@ -1,19 +1,10 @@
 package sg.edu.nus.iss.vttp5a_day5l.model;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-
 public class Person {
 
     // put in the necessary validations
-    @NotNull(message = "id must be auto generated")
     private Integer id;
-
-    @NotEmpty(message = "Name is mandatory")
     private String name;
-
-    @Email(message = "Email input does not conform to email format")
     private String email;
 
     public Person(Integer id, String name, String email) {
@@ -50,5 +41,4 @@ public class Person {
     public String toString() {
         return "Person [id=" + id + ", name=" + name + ", email=" + email + "]";
     }
-    
 }

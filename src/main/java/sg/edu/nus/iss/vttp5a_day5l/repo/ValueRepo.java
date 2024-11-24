@@ -11,7 +11,6 @@ import sg.edu.nus.iss.vttp5a_day5l.util.Util;
 public class ValueRepo {
 
     //slide 20
-
     @Autowired
     @Qualifier(Util.template01)
     RedisTemplate<String,String> template;

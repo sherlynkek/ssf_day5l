@@ -58,6 +58,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
 		<dependency>
     		<groupId>redis.clients</groupId>
