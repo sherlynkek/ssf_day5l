@@ -64,29 +64,29 @@ public class PersonController {
         return "redirect:/persons";
     }
 
-    // Why issit telling me the @PathVariable annotation is redundant??
-   @GetMapping("/edit/{id}/{fullName}/{email}")
-   public String editPerson(@PathVariable(name = "id") String id,
-   @PathVariable(name = "fullName") String fullName,
-   @PathVariable(name = "email") String email, Model model) {
 
-        Person p = new Person(Integer.parseInt(id), fullName, email);
-        model.addAttribute("person", p);
-        return "editPerson";
-   }
+    @GetMapping("/edit/{id}/{fullName}/{email}")
+    public String editPerson(@PathVariable(name = "id") String id,
+    @PathVariable(name = "fullName") String fullName,
+    @PathVariable(name = "email") String email, Model model) {
 
-   @PostMapping("/edit/{id}/{fullName}/{email}")
-   public String handleEdit(@Valid Person person, BindingResult result,
-   @PathVariable(name = "id") String id,
-   @PathVariable(name = "fullName") String fullName,
-   @PathVariable(name = "email") String email, Model model) {
+       Person p = new Person(Integer.parseInt(id), fullName, email);
+       model.addAttribute("person", p);
+       return "editPerson";
+    }
+
+    @PostMapping("/edit/{id}/{fullName}/{email}")
+    public String handleEdit(@Valid Person person, BindingResult result,
+    @PathVariable(name = "id") String id,
+    @PathVariable(name = "fullName") String fullName,
+    @PathVariable(name = "email") String email, Model model) {
        
     if (result.hasErrors()){
         return "editPerson";
-       }
+    }
 
-       String originalPerson = id + "," + fullName + "," + email;
-       personSvc.edit("persons", originalPerson, person.toString());
-       return "redirect:/persons";
+    String originalPerson = id + "," + fullName + "," + email;
+    personSvc.edit("persons", originalPerson, person.toString());
+    return "redirect:/persons";
    }
 }

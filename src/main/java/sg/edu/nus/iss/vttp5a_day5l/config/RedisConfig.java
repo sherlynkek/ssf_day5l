@@ -38,7 +38,7 @@ public class RedisConfig
         if (redisUsername.trim().length()>0)
         {
             rsc.setUsername(redisUsername);
-            rsc.setPassword(redisPassword); // usually if username not blank, password would not be blank?
+            rsc.setPassword(redisPassword);
         }
 
         JedisClientConfiguration jcc = JedisClientConfiguration.builder().build();
